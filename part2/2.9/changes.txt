@@ -1,0 +1,3 @@
+I had to change the REACT_APP_BACKEND_URL to http://localhost/api/ from its original url,
+
+I also had to change REQUEST_ORIGIN to http://localhost. for the backend

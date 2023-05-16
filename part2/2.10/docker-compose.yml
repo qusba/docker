@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+
+    backend:
+        image: new-backend
+        environment:
+            - REDIS_HOST=redis
+            - POSTGRES_HOST=postgres_db
+        depends_on:
+            - db
+
+    frontend:
+        image: new-frontend
+
+    proxy:
+        image: nginx:latest
+        volumes:
+            - type: bind
+              source: ./nginx.conf
+              target: /etc/nginx/nginx.conf
+        ports:
+            - 80:80
+        depends_on:
+            - backend
+            - frontend
+
+    redis:
+        image: redis
+        container_name: redis
+        command: ["redis-server"]
+
+    db:
+        image: postgres:13.2-alpine
+        restart: unless-stopped
+        environment:
+            POSTGRES_PASSWORD: postgres
+        container_name: postgres_db
+        volumes:
+            - type: bind
+              source: ./database
+              target: /var/lib/postgresql/data
+
+volumes:
+    database:
