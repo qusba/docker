@@ -1,0 +1,6 @@
+1. Give the scripts te rights to run
+2. (login to docker)
+3. Call the script with sh publisher_script.sh arg1 arg2 
+4. replace arg1 with github repository
+5. replace arg2 with dockerhub repository
+

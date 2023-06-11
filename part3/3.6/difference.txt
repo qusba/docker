@@ -1,0 +1,3 @@
+In the frontend the difference was around 15MB
+
+In the backend the difference was around 300kb
