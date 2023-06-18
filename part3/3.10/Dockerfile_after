@@ -1,0 +1,13 @@
+FROM ubuntu:18.04
+
+COPY script.sh .
+
+RUN apt-get -y update \
+  && apt-get -y install curl \
+  && adduser --disabled-password appuser \
+  && chown appuser . \
+  && chmod +rwx script.sh
+
+USER appuser
+
+ENTRYPOINT ./script.sh 
